@@ -53,7 +53,7 @@ public class TimeService {
                 .toList();
     }
 
-    private void validateDateFormat(String date) {
+    private void validateDateFormat(final String date) {
         try {
             LocalDate.parse(date);
         } catch (DateTimeParseException e) {
@@ -67,7 +67,7 @@ public class TimeService {
                 .toList();
     }
 
-    private Set<ReservationTime> findAllBookedTimes(String date, Long themeId) {
+    private Set<ReservationTime> findAllBookedTimes(final String date, final Long themeId) {
         return reservationRepository
                 .findAllByDateAndThemeId(LocalDate.parse(date), themeId)
                 .stream()
@@ -84,7 +84,7 @@ public class TimeService {
         return TimeResponse.from(savedTime, false);
     }
 
-    private void validateDuplicate(LocalTime startAt) {
+    private void validateDuplicate(final LocalTime startAt) {
         if (timeRepository.existByStartAt(startAt)) {
             throw new TimeDuplicatedException("이미 존재하는 예약 시간 입니다.");
         }
@@ -99,7 +99,7 @@ public class TimeService {
         return deletedCount;
     }
 
-    private void validateUsed(Long id) {
+    private void validateUsed(final Long id) {
         if (reservationRepository.existsByTimeId(id)) {
             throw new TimeUsedException("예약된 시간은 삭제할 수 없습니다.");
         }

@@ -24,7 +24,7 @@ class ReservationTest {
         final Reservation expected = new Reservation(id, "Seyang", "2024-05-05", null, null);
 
         // when
-        Reservation actual = reservation.assignId(id);
+        final Reservation actual = reservation.assignId(id);
 
         // then
         assertThat(actual).isEqualTo(expected);
@@ -34,12 +34,12 @@ class ReservationTest {
     @DisplayName("예약에 시간을 부여한다.")
     void assignTime() {
         // given
-        ReservationTime reservationTime = new ReservationTime(1L, LocalTime.of(10, 0));
-        Reservation reservation = new Reservation(2L, new ReserveName("Seyang"), null, null, null);
-        Reservation expected = new Reservation(2L, new ReserveName("Seyang"), null, reservationTime, null);
+        final ReservationTime reservationTime = new ReservationTime(1L, LocalTime.of(10, 0));
+        final Reservation reservation = new Reservation(2L, new ReserveName("Seyang"), null, null, null);
+        final Reservation expected = new Reservation(2L, new ReserveName("Seyang"), null, reservationTime, null);
 
         // when
-        Reservation actual = reservation.assignTime(reservationTime);
+        final Reservation actual = reservation.assignTime(reservationTime);
 
         // then
         assertThat(actual).isEqualTo(expected);

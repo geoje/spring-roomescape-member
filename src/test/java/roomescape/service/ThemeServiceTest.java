@@ -179,10 +179,10 @@ class ThemeServiceTest {
     private void createRandomReservations(int days, List<ThemeResponse> themes, ReservationTime time, List<Reservation> reservations) {
         final Random random = new Random();
         for (int day = 1; day < days * 2; day++) {
-            LocalDate date = LocalDate.now().minusDays(day);
+            final LocalDate date = LocalDate.now().minusDays(day);
             for (ThemeResponse theme : themes) {
                 if (random.nextBoolean()) {
-                    Reservation reservation = new Reservation(
+                    final Reservation reservation = new Reservation(
                             null,
                             new ReserveName("Person"),
                             date,

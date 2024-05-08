@@ -19,8 +19,9 @@ import java.util.List;
 @Service
 public class ThemeService {
 
-    public static final int DAYS_LIMIT = 30;
+    private static final int DAYS_LIMIT = 30;
     private static final int ROWS_LIMIT = 100;
+
     private final ReservationRepository reservationRepository;
     private final ThemeRepository themeRepository;
 

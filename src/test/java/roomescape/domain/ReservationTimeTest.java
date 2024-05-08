@@ -18,11 +18,11 @@ class ReservationTimeTest {
     @DisplayName("예약 시간에 아이디를 부여한다.")
     void assignId() {
         // given
-        ReservationTime time = new ReservationTime(null, LocalTime.of(10, 0));
-        ReservationTime expected = new ReservationTime(2L, LocalTime.of(10, 0));
+        final ReservationTime time = new ReservationTime(null, LocalTime.of(10, 0));
+        final ReservationTime expected = new ReservationTime(2L, LocalTime.of(10, 0));
 
         // when
-        ReservationTime actual = time.assignId(2L);
+        final ReservationTime actual = time.assignId(2L);
 
         // then
         assertThat(actual).isEqualTo(expected);
