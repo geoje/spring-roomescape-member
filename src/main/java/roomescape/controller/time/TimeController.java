@@ -27,13 +27,13 @@ public class TimeController {
     }
 
     @GetMapping
-    public List<TimeResponse> getTimes(
+    public ResponseEntity<List<TimeResponse>> getTimes(
             @RequestParam(value = "date", required = false) final String date,
             @RequestParam(value = "themeId", required = false) final Long themeId) {
         if (Objects.isNull(date) || Objects.isNull(themeId)) {
-            return timeService.getTimes();
+            return ResponseEntity.ok(timeService.getTimes());
         }
-        return timeService.getTimesWithBooked(date, themeId);
+        return ResponseEntity.ok(timeService.getTimesWithBooked(date, themeId));
     }
 
     @PostMapping

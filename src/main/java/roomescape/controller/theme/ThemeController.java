@@ -26,8 +26,8 @@ public class ThemeController {
     }
 
     @GetMapping
-    public List<ThemeResponse> getThemes() {
-        return themeService.getThemes();
+    public ResponseEntity<List<ThemeResponse>> getThemes() {
+        return ResponseEntity.ok(themeService.getThemes());
     }
 
     @PostMapping
@@ -49,10 +49,11 @@ public class ThemeController {
     }
 
     @GetMapping("/popular")
-    public List<PopularThemeResponse> getPopularThemes(
+    public ResponseEntity<List<PopularThemeResponse>> getPopularThemes(
             @RequestParam final int days,
             @RequestParam final int limit
     ) {
-        return themeService.getPopularThemes(new PopularThemeRequest(days, limit));
+        final List<PopularThemeResponse> popularThemes = themeService.getPopularThemes(new PopularThemeRequest(days, limit));
+        return ResponseEntity.ok(popularThemes);
     }
 }
